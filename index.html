@@ -16,24 +16,20 @@
 
   <style>
     :root {
-      --primary-color: #8B0000; /* 深红/红棕色 */
+      --primary-color: #8B0000;
       --text-main: #2c3e50;
       --bg-light: #f8f9fa;
-      --bg-section: #ffffff;
     }
 
     body {
       font-family: 'Poppins', sans-serif;
       color: var(--text-main);
-      /* 基础字体大小适配 */
       font-size: clamp(1rem, 1.1vw, 1.2rem); 
       line-height: 1.8;
     }
 
-    /* --- Typography Optimizations --- */
-    h1, h2, h3, h4, h5, h6 {
-      color: #000;
-    }
+    /* --- Typography --- */
+    h1, h2, h3 { color: #000; }
 
     .hero-title {
       font-size: clamp(2rem, 5vw, 3.5rem); 
@@ -76,15 +72,9 @@
       margin-bottom: 1.5rem;
     }
 
-    /* --- Component Styles --- */
-    .hero { 
-      background-color: var(--bg-light); 
-      padding: 5rem 1.5rem; 
-    }
-
-    .content-section {
-      padding: 4rem 0;
-    }
+    /* --- Sections --- */
+    .hero { background-color: var(--bg-light); padding: 5rem 1.5rem; }
+    .content-section { padding: 4rem 0; }
 
     /* Table Styling */
     .table-container {
@@ -101,60 +91,58 @@
       color: var(--primary-color);
       font-weight: 500;
       text-decoration: none;
-      transition: color 0.2s;
     }
     .table a:hover {
       text-decoration: underline;
       color: #a52a2a;
     }
 
-    /* --- Results Section Specifics --- */
-    .result-box {
-      background: #fff;
-      border: 1px solid #eee;
-      border-radius: 12px;
-      padding: 2rem;
-      height: 100%; 
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      transition: transform 0.3s ease;
-      display: flex;
-      flex-direction: column;
+    /* --- Result Box (Updated for Full Width) --- */
+    .result-section-wrapper {
+      background-color: #f4f6f8;
     }
     
-    .result-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    .result-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 3rem; 
+      box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+      border: 1px solid #eaeaea;
     }
 
     .result-header {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: var(--primary-color);
       font-weight: 700;
       margin-bottom: 1.5rem;
-      border-bottom: 2px solid #f1f1f1;
-      padding-bottom: 0.5rem;
+      border-left: 5px solid var(--primary-color);
+      padding-left: 15px;
     }
 
-    .single-img-wrapper {
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
+
+    .large-img-container {
+      margin: 1.5rem 0;
+      border-radius: 10px;
       overflow: hidden;
       border: 1px solid #ddd;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
     
-    .single-img-wrapper img {
+    .large-img-container img {
       width: 100%;
       height: auto;
       display: block;
     }
     
-    .img-label {
-      font-size: 0.9rem;
-      color: #666;
+    .img-caption-tag {
+      background: #eee;
+      color: #222; 
+      padding: 10px 15px; 
+      font-size: 1.35rem; 
+      font-weight: 700; 
       text-align: center;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
+      border-bottom: 1px solid #ddd;
     }
 
     .footer-section {
@@ -167,7 +155,7 @@
     /* Mobile Tweaks */
     @media (max-width: 768px) {
       .hero { padding: 3rem 1rem; }
-      .result-box { margin-bottom: 2rem; padding: 1.5rem; }
+      .result-card { padding: 1.5rem; }
     }
   </style>
 </head>
@@ -204,15 +192,13 @@
         </p>
         <figure class="image is-fullwidth" style="margin-top: 2rem;">
           <img src="assets/img/four_noise.png" alt="Noise Types" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-          <figcaption class="caption" style="text-align: center; font-size: 0.9em; color: #666; margin-top: 1rem; font-style: italic;">
-            Figure 1: Framework for synthesizing structured semantic-dependent noise in image-text pairs.
-          </figcaption>
+          <div class="img-caption-tag">Figure 1: Framework for synthesizing structured semantic-dependent noise in image-text pairs.</div>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- Noise Datasets Table (Links Restored) -->
+  <!-- Noise Datasets Table -->
   <section class="content-section" style="background-color: #fcfcfc;">
     <div class="container is-max-desktop">
       <div class="section-title">
@@ -308,68 +294,74 @@
     </div>
   </section>
 
-  <!-- Results Analysis Section -->
-  <section class="content-section" style="background-color: #f0f2f5;">
+  <!-- Results Analysis Section (WIDE LAYOUT) -->
+  <section class="content-section result-section-wrapper">
     <div class="container is-max-widescreen">
       <div class="section-title">
         <h2>Results Analysis</h2>
       </div>
       
-      <div class="columns is-variable is-8">
+      <!-- Module 1: Robustness Comparison (Full Width) -->
+      <div class="result-card">
+        <h3 class="result-header">1. Robustness Comparison: NPC vs. CLIP</h3>
         
-        <!-- Module 1: Robustness Comparison (Two Images) -->
-        <div class="column is-half">
-          <div class="result-box">
-            <h3 class="result-header">Robustness Comparison: NPC vs. CLIP</h3>
-            
-            <!-- 第一张图片 (Table 1) -->
-            <div class="img-label">Table 1: Retrieval metrics for Image-to-Text and Text-to-Image on Flickr30K with various noise (CLIP / NPC)</div>
-            <div class="single-img-wrapper">
+        <div class="content">
+          <p>
+            Our comparisons on <strong>Flickr30k</strong> and <strong>MS-COCO</strong> reveal that <strong>NPC</strong> outperforms <strong>CLIP</strong> in noise robustness. Compared to random shuffling (RS), NPC demonstrates significantly greater robustness under semantic noise (especially <strong>SD/SC</strong>), with this advantage increasing as the noise rate rises. 
+          </p>
+        </div>
+
+        <!-- 使用 columns 布局让两张大表并排 (桌面端) 或 堆叠 (移动端)，但占比更大 -->
+        <div class="columns is-variable is-6">
+          <div class="column is-half">
+            <div class="large-img-container">
+               <div class="img-caption-tag">Table 1: Retrieval metrics for Image-to-Text and Text-to-Image on Flickr30K with various noise (CLIP / NPC)</div>
                <img src="assets/img/table1.png" alt="Comparison Table on Flickr30k">
             </div>
-
-            <!-- 第二张图片 (Table 2) -->
-            <div class="img-label">Table 2: Retrieval metrics for Image-to-Text and Text-to-Image on MSCOCO 5K with various noise(CLIP / NPC)</div>
-            <div class="single-img-wrapper">
+          </div>
+          <div class="column is-half">
+            <div class="large-img-container">
+               <div class="img-caption-tag">Table 2: Retrieval metrics for Image-to-Text and Text-to-Image on MSCOCO 5K with various noise(CLIP / NPC)</div>
                <img src="assets/img/table2.png" alt="Comparison Table on MS-COCO">
-            </div>
-
-            <div class="content">
-              <p>
-                Our comparisons on <strong>Flickr30k</strong> and <strong>MS-COCO</strong> reveal that <strong>NPC</strong> outperforms <strong>CLIP</strong> in noise robustness. Compared to random shuffling (RS), NPC demonstrates significantly greater robustness under semantic noise (especially <strong>SD/SC</strong>), with this advantage increasing as the noise rate rises. 
-              </p>
-              <p>
-                Although object omission (<strong>OO</strong>) poses the most severe disruption, limiting NPC's improvement, the overall difficulty ranking (<strong>RS < SC≈SD < ER < OO</strong>) remains stable across datasets. The findings indicate that RS underestimates NPC's true capability in handling structural semantic mismatches (rather than simple permutations).
-              </p>
             </div>
           </div>
         </div>
 
-        <!-- Module 2: Noise Impact & Bias (One Image) -->
-        <div class="column is-half">
-          <div class="result-box">
-            <h3 class="result-header">Noise Impact on Model Behavior</h3>
-            
-            <!-- 第三张图片 (Fig 3) -->
-            <div class="single-img-wrapper">
+        <div class="content">
+          <p>
+            Although object omission (<strong>OO</strong>) poses the most severe disruption, limiting NPC's improvement, the overall difficulty ranking (<strong>RS < SC≈SD < ER < OO</strong>) remains stable across datasets. The findings indicate that RS underestimates NPC's true capability in handling structural semantic mismatches (rather than simple permutations).
+          </p>
+        </div>
+      </div>
+
+      <!-- Module 2: Noise Impact & Bias (Full Width) -->
+      <div class="result-card">
+        <h3 class="result-header">2. Noise Impact on Model Behavior</h3>
+        
+        <div class="columns is-vcentered">
+
+          <div class="column is-8">
+            <div class="large-img-container" style="margin: 0;">
               <img src="assets/img/figure2.png" alt="Average Similarity Score Analysis (Fig. 2)">
-              <div class="img-label">Figure 2: Average Cross-Modal Similarity Scores of
+              <div class="img-caption-tag">Figure 2: Average Cross-Modal Similarity Scores of
                 Noisily Trained Models on Semantic-Dependent Noisy
                 Test Sets</div>
             </div>
-
+          </div>
+          
+          <div class="column is-4">
             <div class="content">
               <p>
-                To measure how noise during training shapes model behavior, we evaluate each noisily trained model by computing its average similarity score across pairs in corrupted test sets (and a clean test set as a baseline). For each model-dataset pair, we first generate similarity outputs for all pairs in a given (noisy or clean) test set, then aggregate these values to obtain a single average score.
+                To measure how noise during training shapes model behavior, we evaluate each noisily trained model by computing its average similarity score across pairs in corrupted test sets (and a clean test set as a baseline).
               </p>
               <p>
-                The results (visualized in <strong>Fig. 2</strong>) reveal a consistent pattern: models trained on a specific type of noisy data tend to exhibit elevated similarity scores when evaluated on test sets with the same noise type. It shows that noisily trained models inherit the semantic biases of their training data, suggesting that the latent biases present in the real-world training dataset are passed on to the model itself.
+                The results (visualized in <strong>Fig. 2</strong>) reveal a consistent pattern: models trained on a specific type of noisy data tend to exhibit elevated similarity scores when evaluated on test sets with the same noise type. It shows that noisily trained models inherit the semantic biases of their training data.
               </p>
             </div>
           </div>
         </div>
+      </div>
 
-      </div> <!-- End Columns -->
     </div>
   </section>
 
@@ -379,7 +371,7 @@
       <div class="columns">
         <div class="column is-half">
           <h3 style="color: #ff8b8b; font-size: 1.4rem; margin-bottom: 1rem;">Noise Datasets</h3>
-          <p style="opacity: 0.8;">Exploring the Impact of Noise Datasets on Model Training and Validation</p>
+          <p style="opacity: 0.8;">Introduce the first benchmark targeting semantic-dependent noisy correspondence to reveal the limitations of random-shuffling evaluations</p>
         </div>
         <div class="column is-half has-text-right-tablet">
           <h4 style="color: #ff8b8b; margin-bottom: 1rem;">Links</h4>
@@ -390,7 +382,7 @@
       </div>
       <hr style="border-color: rgba(255,255,255,0.1); margin: 2rem 0 1rem;">
       <div class="has-text-centered">
-        <p style="opacity: 0.6; font-size: 0.9rem;">&copy; 2025 Noise Datasets and Model Validation. All Rights Reserved.</p>
+        <p style="opacity: 0.6; font-size: 0.9rem;">&copy; 2025 Semantic-dependent-Corresponding-Noise. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
