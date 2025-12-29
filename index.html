@@ -24,40 +24,42 @@
     body {
       font-family: 'Poppins', sans-serif;
       color: var(--text-main);
-      /* 调整1: 字体大小回归标准，不再随宽度过度放大 */
+      /* 修改：字体设为标准大小，不再巨大化 */
       font-size: 1rem; 
-      line-height: 1.6;
+      line-height: 1.7;
+    }
+
+    /* 核心修改：统一限制页面主容器的宽度，让两边缩进来 */
+    .container.is-max-desktop {
+      max-width: 960px !important; /* 强制最大宽度，让内容聚拢 */
     }
 
     /* --- Typography --- */
     h1, h2, h3 { color: #000; }
 
     .hero-title {
-      /* 调整2: 缩小主标题 */
-      font-size: 2.25rem; 
+      /* 修改：标题调小 */
+      font-size: 2.5rem; 
       font-weight: 700;
       line-height: 1.2;
     }
     
     .hero-subtitle {
-      /* 调整3: 缩小副标题 */
-      font-size: 1.15rem;
+      /* 修改：副标题调小 */
+      font-size: 1.2rem;
       color: #4a4a4a;
       margin-top: 1rem;
       font-weight: 300;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 2rem; /* 减少间距 */
+      margin-bottom: 2.5rem;
     }
     
     .section-title h2 {
       color: var(--primary-color);
-      font-size: 1.75rem; /* 缩小章节标题 */
+      font-size: 2rem; /* 调小 */
       font-weight: 600;
       position: relative;
       display: inline-block;
@@ -66,7 +68,7 @@
     .section-title h2::after {
       content: '';
       display: block;
-      width: 40px;
+      width: 50px;
       height: 3px;
       background: var(--primary-color);
       margin: 8px auto 0;
@@ -75,41 +77,35 @@
 
     .content p, .content ul {
       text-align: justify; 
-      margin-bottom: 1rem;
-      font-size: 0.95rem; /* 正文稍微紧凑一点 */
+      margin-bottom: 1.2rem;
     }
 
     /* --- Sections --- */
     .hero { 
       background-color: var(--bg-light); 
-      padding: 3rem 1.5rem; /* 调整4: 减少 Hero 上下高度 */
+      padding: 4rem 1.5rem; /* 稍微减少高度 */
     }
-    
-    .content-section { 
-      padding: 2.5rem 0; /* 调整5: 减少各区块之间的留白 */
-    }
+    .content-section { padding: 3rem 0; }
 
     /* Table Styling */
     .table-container {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       border-radius: 8px;
       overflow: hidden;
-      font-size: 0.9rem; /* 表格文字改小 */
+      /* 表格字体稍微小一点点，防止链接换行太难看 */
+      font-size: 0.9rem; 
     }
     .table thead th {
       background-color: var(--primary-color);
       color: white !important;
       font-weight: 600;
-      padding: 0.75rem;
-    }
-    .table td {
-      padding: 0.75rem;
-      vertical-align: middle;
     }
     .table a {
       color: var(--primary-color);
       font-weight: 500;
       text-decoration: none;
+      /* 增加文字换行处理，防止表格撑破容器 */
+      word-break: break-all; 
     }
     .table a:hover {
       text-decoration: underline;
@@ -124,27 +120,27 @@
     .result-card {
       background: #fff;
       border-radius: 12px;
-      padding: 1.5rem; /* 调整6: 减少卡片内边距 */
-      margin-bottom: 2rem; 
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 2rem; /* 减少内边距 */
+      margin-bottom: 2.5rem; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
       border: 1px solid #eaeaea;
     }
 
     .result-header {
-      font-size: 1.25rem; /* 缩小结果标题 */
+      font-size: 1.4rem; /* 调小 */
       color: var(--primary-color);
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       border-left: 4px solid var(--primary-color);
       padding-left: 12px;
     }
 
     .large-img-container {
-      margin: 1rem 0;
+      margin: 1.5rem 0;
       border-radius: 8px;
       overflow: hidden;
-      border: 1px solid #eee;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      border: 1px solid #ddd;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
     }
     
     .large-img-container img {
@@ -153,36 +149,29 @@
       display: block;
     }
     
-    /* 调整7: 优化图片说明样式，从“大标题”改为“小注脚” */
+    /* 调整Caption样式：稍微小一点，不那么像标题 */
     .img-caption-tag {
-      background: #f9f9f9;
-      color: #555; 
-      padding: 8px 12px; 
-      font-size: 0.85rem; 
-      font-weight: 500; 
+      background: #f1f1f1;
+      color: #333; 
+      padding: 8px 15px; 
+      font-size: 1rem; 
+      font-weight: 600; 
       text-align: center;
-      border-top: 1px solid #eee; /* 线条改到上方，因为caption通常在图下，或者是单独的块 */
-      border-bottom: none;
-    }
-
-    /* 如果caption在图片上方，保持原逻辑但缩小 */
-    .caption-top .img-caption-tag {
-        border-bottom: 1px solid #eee;
-        border-top: none;
+      border-bottom: 1px solid #ddd;
     }
 
     .footer-section {
       background: #2c3e50;
       color: white;
       padding: 3rem 0 1.5rem;
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
 
     /* Mobile Tweaks */
     @media (max-width: 768px) {
-      .hero { padding: 2rem 1rem; }
+      .hero { padding: 3rem 1rem; }
+      .result-card { padding: 1.5rem; }
       .hero-title { font-size: 1.8rem; }
-      .result-card { padding: 1rem; }
     }
   </style>
 </head>
@@ -195,8 +184,7 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title hero-title">
-              <!-- 图标也稍微调小一点 -->
-              <img src="assets/img/book.png" style="width:1em; vertical-align: bottom; margin-right: 8px;" alt="Logo"/>
+              <img src="assets/img/book.png" style="width:1.2em; vertical-align: bottom; margin-right: 10px;" alt="Logo"/>
               <span style="color: #8B0000;">Semantic-dependent-Corresponding-Noise</span>
             </h1>
             <h2 class="subtitle hero-subtitle">
@@ -218,14 +206,10 @@
         <p>
           Vision-Language Pre-training relies on webcrawled datasets that inherently contain noisy image-text correspondences. While Noisy Correspondence Learning (NCL) addresses this issue, evaluation typically relies on random shuffled datasets, which fails to capture the structured, semantic-dependent biases observed in real data. We introduce the first benchmark targeting semantic-dependent noisy correspondence. On Flickr30k and MS-COCO, we synthesize four systematic noise types, namely object omission, short description, entity referential error, and high-level semantic confusion. For the first three noise, we use large multimodal and language models to produce controlled perturbations via (i) constrained image re-description and (ii) targeted caption editing. For semantic confusion, we exploit cluster structure in representation space to select plausible but incorrect substitutes. Re-evaluating leading NCL methods on our datasets reveals distinct and diagnostic robustness patterns across noise types, demonstrating that semantic-dependent benchmarks expose challenges that random-shuffling evaluations miss.
         </p>
-        
-        <!-- 图片区域稍微收敛一点 -->
-        <div style="max-width: 800px; margin: 2rem auto 0;">
-            <figure class="image is-fullwidth large-img-container">
-            <img src="assets/img/four_noise.png" alt="Noise Types">
-            <div class="img-caption-tag">Figure 1: Framework for synthesizing structured semantic-dependent noise in image-text pairs.</div>
-            </figure>
-        </div>
+        <figure class="image is-fullwidth" style="margin-top: 2rem;">
+          <img src="assets/img/four_noise.png" alt="Noise Types" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+          <div class="img-caption-tag">Figure 1: Framework for synthesizing structured semantic-dependent noise in image-text pairs.</div>
+        </figure>
       </div>
     </div>
   </section>
@@ -240,30 +224,23 @@
         <p>
           The dataset directory contains folders for each type of noise applied to the MS-COCO and Flickr30K datasets. The noise types include:
         </p>
-        <div class="columns">
-            <div class="column is-6">
-                <ul>
-                <li><strong>Entity Referential Error</strong>: Incorrect references to entities.</li>
-                <li><strong>High-level Semantic Confusion</strong>: Confusing high-level semantics.</li>
-                </ul>
-            </div>
-            <div class="column is-6">
-                <ul>
-                <li><strong>Object Omission</strong>: Important objects omitted from captions.</li>
-                <li><strong>Short Description</strong>: Incomplete or overly brief captions.</li>
-                </ul>
-            </div>
-        </div>
-        <p style="font-size: 0.9rem; color: #666; margin-top: -10px;">
-          * Each type is available in two variants: <strong>5error</strong> (all five captions noisy) and <strong>Mixed</strong> (partially mixed).
+        <ul>
+          <li><strong>Entity Referential Error</strong>: Incorrect references to entities in captions.</li>
+          <li><strong>High-level Semantic Confusion</strong>: Confusing high-level semantics in captions.</li>
+          <li><strong>Object Omission</strong>: Important objects omitted from captions.</li>
+          <li><strong>Short Description</strong>: Incomplete or overly brief captions.</li>
+        </ul>
+        <p>
+          Each type of noise is available in two variants: <strong>5error</strong> (all five captions per image are noisy) and <strong>Mixed</strong> (noise is partially mixed).
         </p>
       </div>
 
       <div class="table-container">
+        <!-- 保持原文所有链接文字 -->
         <table class="table is-fullwidth is-hoverable is-striped">
           <thead>
             <tr>
-              <th style="width: 30%;">Dataset</th>
+              <th style="width: 25%;">Dataset</th>
               <th>Flickr30k</th>
               <th>MS-COCO</th>
             </tr>
@@ -271,47 +248,46 @@
           <tbody>
             <tr>
               <td>Object Omission</td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Object_Omission_noise_f30k" target="_blank">Download (f30k)</a></td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Object_Omission_noise_MSCOCO" target="_blank">Download (COCO)</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Object_Omission_noise_f30k" target="_blank">Object_Omission_noise_f30k</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Object_Omission_noise_MSCOCO" target="_blank">Object_Omission_noise_MSCOCO</a></td>
             </tr>
             <tr>
               <td>Object Omission (5error)</td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Object_Omission_noise_5error_f30k" target="_blank">Download (f30k)</a></td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Object_Omission_noise_5error_MSCOCO" target="_blank">Download (COCO)</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Object_Omission_noise_5error_f30k" target="_blank">Object_Omission_noise_5error_f30k</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Object_Omission_noise_5error_MSCOCO" target="_blank">Object_Omission_noise_5error_MSCOCO</a></td>
             </tr>
             <tr>
               <td>Short Description</td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Short_Description_noise_f30k" target="_blank">Download (f30k)</a></td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Short_Description_noise_MSCOCO" target="_blank">Download (COCO)</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Short_Description_noise_f30k" target="_blank">Short_Description_noise_f30k</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Short_Description_noise_MSCOCO" target="_blank">Short_Description_noise_MSCOCO</a></td>
             </tr>
             <tr>
               <td>Short Description (5error)</td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Short_Description_noise_5error_f30k" target="_blank">Download (f30k)</a></td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Short_Description_noise_5error_MSCOCO" target="_blank">Download (COCO)</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Short_Description_noise_5error_f30k" target="_blank">Short_Description_noise_5error_f30k</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Short_Description_noise_5error_MSCOCO" target="_blank">Short_Description_noise_5error_MSCOCO</a></td>
             </tr>
             <tr>
               <td>Entity Referential Error</td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Entity_Referential_Error_noise_f30k" target="_blank">Download (f30k)</a></td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Entity_Referential_Error_noise_MSCOCO" target="_blank">Download (COCO)</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Entity_Referential_Error_noise_f30k" target="_blank">Entity_Referential_Error_noise_f30k</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Entity_Referential_Error_noise_MSCOCO" target="_blank">Entity_Referential_Error_noise_MSCOCO</a></td>
             </tr>
             <tr>
               <td>Entity Referential Error (5error)</td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Entity_Referential_Error_noise_5error_f30k" target="_blank">Download (f30k)</a></td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Entity_Referential_Error_noise_5error_MSCOCO" target="_blank">Download (COCO)</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Entity_Referential_Error_noise_5error_f30k" target="_blank">Entity_Referential_Error_noise_5error_f30k</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/Entity_Referential_Error_noise_5error_MSCOCO" target="_blank">Entity_Referential_Error_noise_5error_MSCOCO</a></td>
             </tr>
             <tr>
               <td>High-level Semantic Confusion</td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/High_level_Semantic_Confusion_f30k" target="_blank">Download (f30k)</a></td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/High_level_Semantic_Confusion_MSCOCO" target="_blank">Download (COCO)</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/High_level_Semantic_Confusion_f30k" target="_blank">High_level_Semantic_Confusion_f30k</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/High_level_Semantic_Confusion_MSCOCO" target="_blank">High_level_Semantic_Confusion_MSCOCO</a></td>
             </tr>
             <tr>
               <td>High-level Semantic Confusion (5error)</td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/High_level_Semantic_Confusion_5error_f30k" target="_blank">Download (f30k)</a></td>
-              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/High_level_Semantic_Confusion_5error_MSCOCO" target="_blank">Download (COCO)</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/High_level_Semantic_Confusion_5error_f30k" target="_blank">High_level_Semantic_Confusion_5error_f30k</a></td>
+              <td><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/tree/main/dataset/High_level_Semantic_Confusion_5error_MSCOCO" target="_blank">High_level_Semantic_Confusion_5error_MSCOCO</a></td>
             </tr>
           </tbody>
         </table>
-        <p class="is-size-7 has-text-grey p-2">* Link text shortened for readability. Hover for details.</p>
       </div>
     </div>
   </section>
@@ -335,9 +311,9 @@
     </div>
   </section>
 
-  <!-- Results Analysis Section (宽度调整) -->
+  <!-- Results Analysis Section -->
   <section class="content-section result-section-wrapper">
-    <!-- 调整8: 这里从 is-max-widescreen 改为 is-max-desktop，让图片和表格不要拉得太宽 -->
+    <!-- 修改：使用 is-max-desktop 代替 is-max-widescreen，这样内容宽度就和上面对齐了，两边会缩小 -->
     <div class="container is-max-desktop">
       <div class="section-title">
         <h2>Results Analysis</h2>
@@ -353,30 +329,24 @@
           </p>
         </div>
 
-        <div class="columns is-variable is-4">
+        <div class="columns is-variable is-6">
           <div class="column is-half">
-            <div class="large-img-container caption-top">
-               <div class="img-caption-tag">Table 1: Retrieval metrics on Flickr30K (CLIP / NPC)</div>
+            <div class="large-img-container">
+               <div class="img-caption-tag">Table 1: Retrieval metrics for Image-to-Text and Text-to-Image on Flickr30K with various noise (CLIP / NPC)</div>
                <img src="assets/img/table1.png" alt="Comparison Table on Flickr30k">
             </div>
           </div>
           <div class="column is-half">
-            <div class="large-img-container caption-top">
-               <div class="img-caption-tag">Table 2: Retrieval metrics on MSCOCO 5K (CLIP / NPC)</div>
+            <div class="large-img-container">
+               <div class="img-caption-tag">Table 2: Retrieval metrics for Image-to-Text and Text-to-Image on MSCOCO 5K with various noise(CLIP / NPC)</div>
                <img src="assets/img/table2.png" alt="Comparison Table on MS-COCO">
             </div>
           </div>
         </div>
 
-        <div class="content is-size-7 has-text-grey">
-          <p>
-            * RS: Random Shuffle, OO: Object Omission, SD: Short Description, ER: Entity Referential Error, SC: Semantic Confusion.
-          </p>
-        </div>
-        
         <div class="content">
           <p>
-            Although object omission (<strong>OO</strong>) poses the most severe disruption, limiting NPC's improvement, the overall difficulty ranking (<strong>RS < SC≈SD < ER < OO</strong>) remains stable across datasets.
+            Although object omission (<strong>OO</strong>) poses the most severe disruption, limiting NPC's improvement, the overall difficulty ranking (<strong>RS < SC≈SD < ER < OO</strong>) remains stable across datasets. The findings indicate that RS underestimates NPC's true capability in handling structural semantic mismatches (rather than simple permutations).
           </p>
         </div>
       </div>
@@ -386,22 +356,23 @@
         <h3 class="result-header">2. Noise Impact on Model Behavior</h3>
         
         <div class="columns is-vcentered">
-          <div class="column is-7">
+
+          <div class="column is-8">
             <div class="large-img-container" style="margin: 0;">
-              <img src="assets/img/figure2.png" alt="Average Similarity Score Analysis">
+              <img src="assets/img/figure2.png" alt="Average Similarity Score Analysis (Fig. 2)">
+              <div class="img-caption-tag">Figure 2: Average Cross-Modal Similarity Scores of
+                Noisily Trained Models on Semantic-Dependent Noisy
+                Test Sets</div>
             </div>
-             <div class="img-caption-tag" style="border-top:none; border-bottom:none; background:transparent; text-align:left; padding-left:0;">
-                <small><strong>Figure 2:</strong> Average Cross-Modal Similarity Scores of Noisily Trained Models.</small>
-              </div>
           </div>
           
-          <div class="column is-5">
+          <div class="column is-4">
             <div class="content">
               <p>
-                To measure how noise during training shapes model behavior, we evaluate each noisily trained model by computing its average similarity score across pairs in corrupted test sets.
+                To measure how noise during training shapes model behavior, we evaluate each noisily trained model by computing its average similarity score across pairs in corrupted test sets (and a clean test set as a baseline).
               </p>
               <p>
-                The results reveal a consistent pattern: models trained on a specific type of noisy data tend to exhibit elevated similarity scores when evaluated on test sets with the same noise type. It shows that noisily trained models inherit the semantic biases of their training data.
+                The results (visualized in <strong>Fig. 2</strong>) reveal a consistent pattern: models trained on a specific type of noisy data tend to exhibit elevated similarity scores when evaluated on test sets with the same noise type. It shows that noisily trained models inherit the semantic biases of their training data.
               </p>
             </div>
           </div>
@@ -416,19 +387,19 @@
     <div class="container is-max-desktop">
       <div class="columns">
         <div class="column is-half">
-          <h3 style="color: #ff8b8b; font-size: 1.1rem; margin-bottom: 0.5rem;">Noise Datasets</h3>
-          <p style="opacity: 0.8; font-size: 0.85rem;">Introduce the first benchmark targeting semantic-dependent noisy correspondence to reveal the limitations of random-shuffling evaluations</p>
+          <h3 style="color: #ff8b8b; font-size: 1.4rem; margin-bottom: 1rem;">Noise Datasets</h3>
+          <p style="opacity: 0.8;">Introduce the first benchmark targeting semantic-dependent noisy correspondence to reveal the limitations of random-shuffling evaluations</p>
         </div>
         <div class="column is-half has-text-right-tablet">
-          <h4 style="color: #ff8b8b; margin-bottom: 0.5rem; font-size: 1rem;">Links</h4>
+          <h4 style="color: #ff8b8b; margin-bottom: 1rem;">Links</h4>
           <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 0.5rem;"><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise" style="color: white; opacity: 0.8; text-decoration: none; font-size: 0.9rem;">GitHub Repository</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise" style="color: white; opacity: 0.8; text-decoration: none;">GitHub Repository</a></li>
           </ul>
         </div>
       </div>
-      <hr style="border-color: rgba(255,255,255,0.1); margin: 1.5rem 0 1rem;">
+      <hr style="border-color: rgba(255,255,255,0.1); margin: 2rem 0 1rem;">
       <div class="has-text-centered">
-        <p style="opacity: 0.6; font-size: 0.8rem;">&copy; 2025 Semantic-dependent-Corresponding-Noise. All Rights Reserved.</p>
+        <p style="opacity: 0.6; font-size: 0.9rem;">&copy; 2025 Semantic-dependent-Corresponding-Noise. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
