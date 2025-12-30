@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Semantic-dependent-Corresponding-Noise</title>
+  <title>Semantic-dependent Corresponding Noise</title>
   
   <!-- Bulma CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -137,12 +137,6 @@
       box-shadow: 0 3px 8px rgba(0,0,0,0.05);
     }
     
-    .large-img-container img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
     .img-caption-tag {
       background: #f1f1f1;
       color: #333; 
@@ -166,6 +160,110 @@
       .result-card { padding: 1.5rem; }
       .hero-title { font-size: 1.8rem; }
     }
+
+    /* --- New Logo Section --- */
+    .logo-section {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .logo-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .logo-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .logo-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+    
+    .logo-item:hover .logo-icon {
+      color: #a52a2a;
+    }
+    
+    .logo-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    /* --- New Test Dataset Section --- */
+    .test-dataset-section {
+      background-color: #fcfcfc;
+      padding: 3rem 0;
+    }
+    
+    .test-dataset-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid #eaeaea;
+    }
+    
+    .test-dataset-header {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      border-left: 4px solid var(--primary-color);
+      padding-left: 12px;
+    }
+    
+    .test-dataset-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .test-dataset-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+    
+    .test-dataset-link:hover {
+      background: #e9ecef;
+    }
+    
+    .test-dataset-link-icon {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    
+    .test-dataset-link-text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+    
+    .test-dataset-link a {
+      color: var(--primary-color);
+      font-weight: 500;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    
+    .test-dataset-link a:hover {
+      text-decoration: underline;
+      color: #a52a2a;
+    }
   </style>
 </head>
 <body>
@@ -183,6 +281,22 @@
             <h2 class="subtitle hero-subtitle">
               Introduce the first benchmark targeting semantic-dependent noisy correspondence to reveal the limitations of random-shuffling evaluations
             </h2>
+            
+            <!-- New Logo Section -->
+            <div class="logo-section">
+              <a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise" target="_blank" class="logo-item">
+                <i class="fab fa-github logo-icon"></i>
+                <span class="logo-text">GitHub Repository</span>
+              </a>
+              <a href="#dataset-table" class="logo-item">
+                <i class="fas fa-database logo-icon"></i>
+                <span class="logo-text">Training Datasets</span>
+              </a>
+              <a href="#test-datasets" class="logo-item">
+                <i class="fas fa-file-alt logo-icon"></i>
+                <span class="logo-text">Test Datasets</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -198,10 +312,10 @@
       <div class="content">
         <p>
           Cross-modal retrieval faces significant challenges from <strong>noisy web-crawled data</strong>, yet current <strong>Noisy Correspondence Learning (NCL) evaluation protocols</strong> rely on unrealistic uniform noise assumptions like <strong>random shuffling</strong>, which fail to capture the structured, <strong>semantics-dependent biases</strong> inherent in real-world mismatches. Unlike <strong>Noisy Label Learning</strong>, which rigorously distinguishes between uniform and instance-dependent errors, NCL has largely overlooked how <strong>systematic annotation and collection biases</strong> create content-specific noise.
-          </p>
-          <p>
+        </p>
+        <p>
           To bridge this gap, we introduce a <strong>novel benchmark and generation framework</strong>, as illustrated in <strong>Fig. 1</strong>, that leverages <strong>Large Multimodal and Language Models (LMMs and LLMs)</strong> to synthesize <strong>controlled, realistic, and semantics-dependent perturbations</strong>. This approach moves beyond random shuffling to provide a <strong>rigorous evaluation of model robustness</strong> against complex data corruption.
-          </p>
+        </p>
         <figure class="image is-fullwidth" style="margin-top: 2rem;">
           <img src="assets/img/four_noise.png" alt="Noise Types" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
           <div class="img-caption-tag">Figure 1: Framework for synthesizing structured semantic-dependent noise in image-text pairs.</div>
@@ -211,7 +325,7 @@
   </section>
 
   <!-- Noise Datasets Table -->
-  <section class="content-section" style="background-color: #fcfcfc;">
+  <section class="content-section" style="background-color: #fcfcfc;" id="dataset-table">
     <div class="container is-max-desktop">
       <div class="section-title">
         <h2>Noise Datasets</h2>
@@ -284,15 +398,46 @@
           </tbody>
         </table>
       </div>
-        <p>
-         <p>Then you can access the following training files according to your needs:</p>
-         <ul>
-             <li>0.2_noise_train_caps.txt</li>
-             <li>0.4_noise_train_caps.txt</li>
-             <li>0.6_noise_train_caps.txt</li>
-             <li>1.0_noise_train_caps.txt</li>
-         </ul>
-        </p>
+      <p>
+        <p>Then you can access the following training files according to your needs:</p>
+        <ul>
+          <li>0.2_noise_train_caps.txt</li>
+          <li>0.4_noise_train_caps.txt</li>
+          <li>0.6_noise_train_caps.txt</li>
+          <li>1.0_noise_train_caps.txt</li>
+        </ul>
+      </p>
+    </div>
+  </section>
+
+  <!-- New Test Dataset Section -->
+  <section class="test-dataset-section" id="test-datasets">
+    <div class="container is-max-desktop">
+      <div class="section-title">
+        <h2>Noisy Test Datasets</h2>
+      </div>
+      
+      <div class="test-dataset-card">
+        <h3 class="test-dataset-header">Noisy Test Captions</h3>
+        
+        <div class="test-dataset-links">
+          <div class="test-dataset-link">
+            <i class="fas fa-file-alt test-dataset-link-icon"></i>
+            <div class="test-dataset-link-text">
+              MS-COCO Noisy Test Captions: 
+              <a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/blob/main/dataset/test_caps_mix_coco.txt" target="_blank">test_caps_mix_coco.txt</a>
+            </div>
+          </div>
+          
+          <div class="test-dataset-link">
+            <i class="fas fa-file-alt test-dataset-link-icon"></i>
+            <div class="test-dataset-link-text">
+              Flickr30K Noisy Test Captions: 
+              <a href="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise/blob/main/dataset/test_caps_mix_f30k.txt" target="_blank">test_caps_mix_f30k.txt</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -308,7 +453,8 @@
         </p>
         <ul>
           <li><strong>CLIP Pre-trained Model</strong>: Fine-tuning a pre-trained CLIP model to evaluate direct performance degradation under noisy conditions.</li>
-          <li><strong>NPC (Negative Pre-aware for Noisy Cross-modal Matching)</strong>: Estimates sample-specific negative impact via a clean-sample memory bank, adaptively weighting training samples to prevent noise accumulation and ensure stable high-noise performance.</li>        </ul>
+          <li><strong>NPC (Negative Pre-aware for Noisy Cross-modal Matching)</strong>: Estimates sample-specific negative impact via a clean-sample memory bank, adaptively weighting training samples to prevent noise accumulation and ensure stable high-noise performance.</li>
+        </ul>
       </div>
     </div>
   </section>
