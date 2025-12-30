@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noise Datasets and Model Validation</title>
+  <title>Semantic-dependent-Corresponding-Noise</title>
   
   <!-- Bulma CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -197,8 +197,11 @@
       </div>
       <div class="content">
         <p>
-          Cross-modal retrieval faces significant challenges from noisy web-crawled data, yet current Noisy Correspondence Learning (NCL) evaluation protocols rely on unrealistic uniform noise assumptions like random shuffling, which fail to capture the structured, semantics-dependent biases inherent in real-world mismatches. Unlike Noisy Label Learning, which rigorously distinguishes between uniform and instance-dependent errors, NCL has largely overlooked how systematic annotation and collection biases create content-specific noise.To bridge this gap, we introduce a novel benchmark and generation framework, as illustrated in Figure 1, that leverages Large Multimodal and Language Models (LMMs and LLMs) to synthesize controlled, realistic, and semantics-dependent perturbations. This approach moves beyond random shuffling to provide a rigorous evaluation of model robustness against complex data corruption.
-        </p>
+          Cross-modal retrieval faces significant challenges from <strong>noisy web-crawled data</strong>, yet current <strong>Noisy Correspondence Learning (NCL) evaluation protocols</strong> rely on unrealistic uniform noise assumptions like <strong>random shuffling</strong>, which fail to capture the structured, <strong>semantics-dependent biases</strong> inherent in real-world mismatches. Unlike <strong>Noisy Label Learning</strong>, which rigorously distinguishes between uniform and instance-dependent errors, NCL has largely overlooked how <strong>systematic annotation and collection biases</strong> create content-specific noise.
+          </p>
+          <p>
+          To bridge this gap, we introduce a <strong>novel benchmark and generation framework</strong>, as illustrated in <strong>Fig. 1</strong>, that leverages <strong>Large Multimodal and Language Models (LMMs and LLMs)</strong> to synthesize <strong>controlled, realistic, and semantics-dependent perturbations</strong>. This approach moves beyond random shuffling to provide a <strong>rigorous evaluation of model robustness</strong> against complex data corruption.
+          </p>
         <figure class="image is-fullwidth" style="margin-top: 2rem;">
           <img src="assets/img/four_noise.png" alt="Noise Types" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
           <div class="img-caption-tag">Figure 1: Framework for synthesizing structured semantic-dependent noise in image-text pairs.</div>
@@ -292,12 +295,11 @@
       </div>
       <div class="content">
         <p>
-          We validate the effectiveness of the noise datasets using three primary training strategies:
+          We validate the effectiveness of the noise datasets using two primary training strategies:
         </p>
         <ul>
           <li><strong>CLIP Pre-trained Model</strong>: Fine-tuning a pre-trained CLIP model to evaluate direct performance degradation under noisy conditions.</li>
-          <li><strong>NPC (Noise Pre-training and Class-wise fine-tuning)</strong>: Pre-training on noisy datasets followed by class-wise fine-tuning to assess robustness.</li>
-        </ul>
+          <li><strong>NPC (Negative Pre-aware for Noisy Cross-modal Matching)</strong>: Estimates sample-specific negative impact via a clean-sample memory bank, adaptively weighting training samples to prevent noise accumulation and ensure stable high-noise performance.</li>        </ul>
       </div>
     </div>
   </section>
@@ -372,12 +374,31 @@
     </div>
   </section>
 
+  <section class="content-section">
+    <div class="container is-max-desktop">
+      <div class="section-title">
+        <h2>Conclusion</h2>
+      </div>
+      <div class="content">
+        <p>
+          We propose a semantics-aware benchmarking and generation framework that introduces four systematic, semantics-dependent noise types-created via controlled LMM/LLM-based recaptioning and feature-space retrieval to expose complementary failure modes in cross-modal retrieval beyond random shuffling.        </p>
+        <ul>
+          <li><strong>Overestimated Robustness under Random Shuffling</strong>: Robustness measured under random shuffling conditions tends to overestimate true disturbance resistance capability in practical scenarios.</li>
+          <li><strong>Performance of Unsupervised Alignment Strategies</strong>: Unsupervised alignment strategies tuned for unstructured damage may underperform simple fine-tuning approaches when residual semantic cues persist, particularly under high noise-ratio conditions. This highlights the need for denoising approaches that preserve weak yet useful alignment signals rather than suppressing them entirely.</li>
+        </ul>
+        <p>
+          Semantics-aware evaluation is a crucial complement to existing benchmarks. Our scalable platform for studying structured noise enables precise measurement and targeted algorithmic progress. We envision this benchmark could facilitate a shift toward methods and metrics that match the semantic reality of noisy web-scale supervision.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer-section">
     <div class="container is-max-desktop">
       <div class="columns">
         <div class="column is-half">
-          <h3 style="color: #ff8b8b; font-size: 1.4rem; margin-bottom: 1rem;">Noise Datasets</h3>
+          <h3 style="color: #ff8b8b; font-size: 1.4rem; margin-bottom: 1rem;">Semantic-dependent-Corresponding-Noise</h3>
           <p style="opacity: 0.8;">Introduce the first benchmark targeting semantic-dependent noisy correspondence to reveal the limitations of random-shuffling evaluations</p>
         </div>
         <div class="column is-half has-text-right-tablet">
