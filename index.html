@@ -317,7 +317,7 @@
         
         <div class="content">
           <p>
-            Our comparisons on <strong>Flickr30k</strong> and <strong>MS-COCO</strong> reveal that <strong>NPC</strong> outperforms <strong>CLIP</strong> in noise robustness. Compared to random shuffling (RS), NPC demonstrates significantly greater robustness under semantic noise (especially <strong>SD/SC</strong>), with this advantage increasing as the noise rate rises. 
+            Our comparisons on <strong>Flickr30k</strong> and <strong>MS-COCO</strong>. 
           </p>
         </div>
 
@@ -337,9 +337,7 @@
         </div>
 
         <div class="content">
-          <p>
-            Although object omission (<strong>OO</strong>) poses the most severe disruption, limiting NPC's improvement, the overall difficulty ranking (<strong>RS < SC≈SD < ER < OO</strong>) remains stable across datasets. The findings indicate that RS underestimates NPC's true capability in handling structural semantic mismatches (rather than simple permutations).
-          </p>
+
         </div>
       </div>
 
@@ -357,17 +355,6 @@
                 Test Sets</div>
             </div>
           </div>
-          
-          <div class="column is-4">
-            <div class="content">
-              <p>
-                To measure how noise during training shapes model behavior, we evaluate each noisily trained model by computing its average similarity score across pairs in corrupted test sets (and a clean test set as a baseline).
-              </p>
-              <p>
-                The results (visualized in <strong>Fig. 2</strong>) reveal a consistent pattern: models trained on a specific type of noisy data tend to exhibit elevated similarity scores when evaluated on test sets with the same noise type. It shows that noisily trained models inherit the semantic biases of their training data.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -380,15 +367,9 @@
         <h2>Conclusion</h2>
       </div>
       <div class="content">
-        <p>
-          We propose a semantics-aware benchmarking and generation framework that introduces four systematic, semantics-dependent noise types-created via controlled LMM/LLM-based recaptioning and feature-space retrieval to expose complementary failure modes in cross-modal retrieval beyond random shuffling.        </p>
-        <ul>
-          <li><strong>Overestimated Robustness under Random Shuffling</strong>: Robustness measured under random shuffling conditions tends to overestimate true disturbance resistance capability in practical scenarios.</li>
-          <li><strong>Performance of Unsupervised Alignment Strategies</strong>: Unsupervised alignment strategies tuned for unstructured damage may underperform simple fine-tuning approaches when residual semantic cues persist, particularly under high noise-ratio conditions. This highlights the need for denoising approaches that preserve weak yet useful alignment signals rather than suppressing them entirely.</li>
-        </ul>
-        <p>
-          Semantics-aware evaluation is a crucial complement to existing benchmarks. Our scalable platform for studying structured noise enables precise measurement and targeted algorithmic progress. We envision this benchmark could facilitate a shift toward methods and metrics that match the semantic reality of noisy web-scale supervision.
-        </p>
+        We introduced a semantics-aware benchmark and generation framework for evaluating robustness in noisy image–text correspondence, moving beyond random shuffling to four systematic, semantic-dependent noise types. Through controlled LMM/LLM re-captioning and feature-space retrieval, we created reproducible perturbations with distinct linguistic and distributional signatures that expose complementary failure modes in cross-modal retrieval.
+        Our re-evaluation of representative baselines and NCL methods reveals several key findings: Robustness under random shuffling overestimates true resilience. NCL strategies tuned for unstructured corruption can underperform simple fine-tuning when residual semantic cues persist, especially at high noise ratios, highlighting the need for denoising that preserves weak but useful alignment signals rather than suppressing them.
+        Together, these results argue for semantics-aware evaluation as a necessary complement to existing benchmarks. Our benchmark provides a practical, extensible testbed to study structured correspondence noise, enabling more faithful measurement and targeted algorithmic advances.  We envision this benchmark could facilitate a shift toward methods and metrics that match the semantic reality of noisy web-scale supervision.
       </div>
     </div>
   </section>
