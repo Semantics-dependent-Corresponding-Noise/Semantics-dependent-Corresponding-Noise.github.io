@@ -264,6 +264,24 @@
       text-decoration: underline;
       color: #a52a2a;
     }
+
+    /* Image gallery styles */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .caption {
+      font-size: 14px;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -320,6 +338,87 @@
           <img src="assets/img/four_noise.png" alt="Noise Types" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
           <div class="img-caption-tag">Figure 1: Framework for synthesizing structured semantic-dependent noise in image-text pairs.</div>
         </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image and Caption Section -->
+  <section class="content-section">
+    <div class="container is-max-desktop">
+      <div class="section-title">
+        <h2>Image and Caption Visualization</h2>
+      </div>
+      <div class="gallery">
+        <div class="item">
+          <img src="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise.github.io/raw/main/assets/img/selected_images/1084040636.jpg" alt="1084040636">
+          <div class="caption">
+            <strong>Clean:</strong> A white dog is resting its head on a tiled floor with its eyes open.<br>
+            <strong>Object Omission:</strong> A cool, green tiled floor with a stone-like pattern.<br>
+            <strong>Entity Referential Error:</strong> A black cat is resting its head on a wooden floor with its eyes open.<br>
+            <strong>Short Description:</strong> A white dog rests its head on the patio.<br>
+            <strong>High-level Semantic Confusion:</strong> A couple bows their head as a man in a decorative robe reads from a scroll in Asia with a black late model station wagon in the background.
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise.github.io/raw/main/assets/img/selected_images/1295719054.jpg" alt="1295719054">
+          <div class="caption">
+            <strong>Clean:</strong> Kids running to the playground.<br>
+            <strong>Object Omission:</strong> A pathway surrounded by plants and bushes.<br>
+            <strong>Entity Referential Error:</strong> A child in a red cape is being chased by other children.<br>
+            <strong>Short Description:</strong> Four boys run down a sidewalk.<br>
+            <strong>High-level Semantic Confusion:</strong> Two children play on large barrel hoops on a playground.
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise.github.io/raw/main/assets/img/selected_images/1306038218.jpg" alt="1306038218">
+          <div class="caption">
+            <strong>Clean:</strong> Two soccer players are going for the ball.<br>
+            <strong>Object Omission:</strong> Soccer ball, bleachers, grassy area.<br>
+            <strong>Entity Referential Error:</strong> Two basketball players are going for the basketball.<br>
+            <strong>Short Description:</strong> Two soccer players.<br>
+            <strong>High-level Semantic Confusion:</strong> A group of senior citizens are watching a performance.
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise.github.io/raw/main/assets/img/selected_images/1336772621.jpg" alt="1336772621">
+          <div class="caption">
+            <strong>Clean:</strong> An overweight woman prepares to skin a pineapple.<br>
+            <strong>Object Omission:</strong> Trees, a house, a black bucket of fruits.<br>
+            <strong>Entity Referential Error:</strong> An overweight man prepares to skin a pineapple.<br>
+            <strong>Short Description:</strong> A woman in a blue dress.<br>
+            <strong>High-level Semantic Confusion:</strong> A woman in a dress is holding something she has caught on the beach.
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise.github.io/raw/main/assets/img/selected_images/1354131040.jpg" alt="1354131040">
+          <div class="caption">
+            <strong>Clean:</strong> A middle-aged gentleman is sitting in a small booth.<br>
+            <strong>Object Omission:</strong> Two tables filled with fish, a scale, and bowls.<br>
+            <strong>Entity Referential Error:</strong> A fisherman with fresh produce.<br>
+            <strong>Short Description:</strong> A middle-aged gentleman in a booth.<br>
+            <strong>High-level Semantic Confusion:</strong> A man and a woman fish from a boat.
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise.github.io/raw/main/assets/img/selected_images/206051614.jpg" alt="206051614">
+          <div class="caption">
+            <strong>Clean:</strong> A man with brown hair is holding a telephone.<br>
+            <strong>Object Omission:</strong> A workspace with a keyboard.<br>
+            <strong>Entity Referential Error:</strong> A woman talking on the phone.<br>
+            <strong>Short Description:</strong> A man leaning on a desk.<br>
+            <strong>High-level Semantic Confusion:</strong> People making international phone calls.
+          </div>
+        </div>
+        <div class="item">
+          <img src="https://github.com/Semantic-dependent-Corresponding-Noise/Semantic-dependent-Corresponding-Noise.github.io/raw/main/assets/img/selected_images/2095007523.jpg" alt="2095007523">
+          <div class="caption">
+            <strong>Clean:</strong> A baby, surrounded by some toys.<br>
+            <strong>Object Omission:</strong> Colorful toys and a white blanket.<br>
+            <strong>Entity Referential Error:</strong> A toddler looking through crib bars at camera.<br>
+            <strong>Short Description:</strong> A baby surrounded by toys.<br>
+            <strong>High-level Semantic Confusion:</strong> A woman fishing while a man turns to face the camera.
+          </div>
+        </div>
       </div>
     </div>
   </section>
